@@ -1,10 +1,14 @@
-provider:
-  name: aws
+image:
+  registry: docker.io
+  repository: bitnamilegacy/external-dns
+  tag: 0.18.0-debian-12-r4
+
+provider: aws
 
 env:
   - name: AWS_DEFAULT_REGION
     value: eu-west-1
-    
+
 domainFilters:
   - lab.yaseensinger.com
 

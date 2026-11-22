@@ -50,12 +50,7 @@ resource "helm_release" "external-dns" {
 
   create_namespace = true
   namespace        = "external-dns"
-    set = [
-    {
-      name  = "crds.enabled"
-      value = "true"
-    }
-  ]
+
   values = [
     "${file("helm-values/external-dns.yaml")}"
   ]
