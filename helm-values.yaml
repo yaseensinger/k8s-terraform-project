@@ -1,0 +1,3 @@
+ingresShim:
+  defaultACMEChallengeType: dns01
+  defaultACMEDNSChallengeProvider: rout53

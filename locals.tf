@@ -1,11 +1,11 @@
 locals {
   name   = "eks-lab"
   domain = "lab.yaseensinger.co.uk"
-  region = "ue-west-2"
+  region = "eu-west-1"
 
   tags = {
     Enviroment = "sandbox"
-    Project    = "eks lab"
+    Project    = "eks-lab"
     owner      = "yaseen"
   }
 }

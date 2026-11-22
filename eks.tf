@@ -4,7 +4,7 @@ module "eks" {
   version = "~> 20.34.0"
 
   cluster_name    = local.name
-  cluster_version = "1.23"
+  cluster_version = "1.34"
 
   cluster_endpoint_public_access = true
 
@@ -16,7 +16,7 @@ module "eks" {
 
   eks_managed_node_group_defaults = {
     disk_size      = 50
-    instance_types = ["t3a.large", "t3.large"]
+    instance_types = ["t3.small"]
   }
 
   eks_managed_node_groups = {
