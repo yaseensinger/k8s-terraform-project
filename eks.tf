@@ -15,7 +15,7 @@ module "eks" {
   control_plane_subnet_ids = module.vpc.public_subnets
 
   eks_managed_node_group_defaults = {
-    disk_size     = 50
+    disk_size      = 50
     instance_types = ["t3a.large", "t3.large"]
   }
 
