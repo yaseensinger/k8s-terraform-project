@@ -6,7 +6,7 @@ module "cert_manager_irsa_role" {
   role_name                  = "cert-manager"
   attach_cert_manager_policy = true
 
-  cert_manager_hosted_zone_arns = ["YOUR_HOSTED_ZONE_ARN"]
+  cert_manager_hosted_zone_arns = ["arn:aws:::hostedzone/Z03848802MCA9NUKGTTZ1"]
 
   oidc_providers = {
     eks = {
@@ -24,7 +24,7 @@ module "external_dns_irsa_role" {
  
   role_name                   = "external-dns"
   attach_external_dns_policy  = true
-  external_dns_hosted_zone_arns = ["YOUR_HOSTED_ZONE_ARN"]
+  external_dns_hosted_zone_arns = ["arn:aws:::hostedzone/Z03848802MCA9NUKGTTZ1"]
 
   oidc_providers = {
     eks = {

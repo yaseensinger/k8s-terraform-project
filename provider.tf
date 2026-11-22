@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 6.0"
+      version = "~> 5.0"
     }
     helm = {
         source = "hashicorp/helm"
@@ -11,13 +11,11 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = " "
+    bucket = "eks-lab-bucket-3424"
     key = "terraform.state"
     region = "eu-west-1"
     encrypt = true
-
   }
-  required_version = ">=4.0"
   
 
 }
