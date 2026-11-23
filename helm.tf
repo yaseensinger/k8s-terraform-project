@@ -14,28 +14,27 @@ resource "helm_release" "nginx" {
 
 
 resource "helm_release" "cert-manager" {
-  name = "cert-manger"
-
+  name       = "cert-manager"
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
+  namespace        = "cert-manager"
+  create_namespace = true
+  take_ownership = true
 
-    set = [
+  set = [
     {
       name  = "crds.enabled"
       value = "true"
     }
   ]
-  
-  create_namespace = true
-  namespace        = "cert-manager"
 
   values = [
-    "${file("helm-values/cert-manager.yaml")}"
+    file("helm-values/cert-manager.yaml")
   ]
 
   depends_on = [
-  module.cert_manager_irsa_role.iam_role_arn
-]
+    module.cert_manager_irsa_role
+  ]
 }
 
 
@@ -56,6 +55,21 @@ resource "helm_release" "external-dns" {
   ]
 
   depends_on = [
-  module.cert_manager_irsa_role.iam_role_arn
-]
+    module.cert_manager_irsa_role.iam_role_arn
+  ]
+}
+
+resource "helm_release" "argocd-deploy" {
+  name       = "argocd-deploy"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  version    = "5.19.15"
+
+  timeout          = 600
+  create_namespace = true
+  namespace        = "argocd"
+
+  values = [
+    file("helm-values/argocd.yaml")
+  ]
 }

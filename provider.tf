@@ -26,7 +26,7 @@ provider "aws" {
 }
 data "aws_eks_cluster" "cluster" {
   name = module.eks.cluster_name
-  
+
 }
 provider "helm" {
 
@@ -36,7 +36,7 @@ provider "helm" {
 
     exec = {
       api_version = "client.authentication.k8s.io/v1beta1"
-      args        = ["eks", "get-token", "--cluster-name",  data.aws_eks_cluster.cluster.name]
+      args        = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.cluster.name]
       command     = "aws"
     }
   }

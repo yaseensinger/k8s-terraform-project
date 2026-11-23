@@ -1,0 +1,25 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: issuer
+
+spec:
+  acme:
+    server: "https://acme-v02.api.letsencrypt.org/directory"
+    email: yaseensinger@hotmail.com
+
+    privateKeySecretRef:
+      name: issuer
+
+    solvers:
+      - dns01:
+          route53:
+            hostedZoneID: Z03848802MCA9NUKGTTZ1
+            region: eu-west-1
+        selector:
+          dnsZones:
+            - "lab.yaseensinger.com"
+
+      - http01:
+          ingress:
+            class: nginx
